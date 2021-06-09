@@ -12,24 +12,26 @@ function App() {
 
   const [total, setTotal] = useState(0);
 
+  const [totalM, setTotalM] = useState(0);
+
   const calc = () => {
     let m = init;
     for(let i = 0; i < months; i++) {
       m = (m * ratePerMonth) + add;
     }
     setTotal(m);
-    console.log(ratePerMonth);
+    setTotalM(add * months + init);
   }
 
   return (
     <div>
       <span>本金：</span> <input onChange={(e) => {setInit(parseInt(e.target.value))}}/><br/>
-      <span>定投： </span> <input onChange={(e) => {setAdd(parseInt(e.target.value))}}/><br/>
+      <span>定投： </span> <input onChange={(e) => {setAdd(parseInt(e.target.value))}}/>/月<br/>
       <span>时间： </span> <input onChange={(e) => {setMonths(parseInt(e.target.value)*12)}}/>年<br/>
       <span>年利率：</span> <input onChange={(e) => {setRate(parseInt(e.target.value)/1200 + 1)}}/>%<br/>
-      <span>总本金：{add * months + init}</span><br/>
-      <span>总收益：{Math.floor(total)}</span><br/>
-      <span>利润： {Math.floor(total) - (add * months + init)}</span><br/>
+      <span>总本金：{totalM}</span><br/>
+      <span>总金额：{Math.floor(total)}</span><br/>
+      <span>利润： {Math.floor(total) - totalM}</span><br/>
       <button onClick={calc}>确认</button>
     </div>
   );
