@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Select, Input, InputNumber, Button, Row, Col } from "antd";
 import styled from "styled-components";
 import "./App.css";
+import Chart from './charts';
 
 const Containter = styled.div`
   display: flex;
@@ -196,6 +197,7 @@ function App() {
             <Col span={6}>利润率：</Col><Col span={6}>{profRate}%</Col>
           </Row>
         </Card>
+        <Chart />
       </Content>
     </Containter>
   );
